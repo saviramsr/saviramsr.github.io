@@ -1,0 +1,94 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modul 8</title>
+</head>
+<body>
+    <h1>Database</h1>
+
+    <table id="data">
+        <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Umur</th>
+            <th>Email</th>
+            <th>Aksi</th>
+        </tr>
+    </table>
+
+    <h2>Tambah Data</h2>
+    <form id="form">
+        <input type="text" id="nama" placeholder="Nama">
+        <input type="number" id="umur" placeholder="Umur">
+        <input type="email" id="email" placeholder="Email">
+        <button type="submit">Tambah</button>
+    </form>
+
+    <script>
+        // Data awal
+        let database = [
+            { id: 1, nama: "John Doe", umur: 30, email: "johndoe@example.com" },
+            { id: 2, nama: "Jane Smith", umur: 25, email: "janesmith@example.com" },
+            // Data lainnya...
+        ];
+
+        // Fungsi untuk menampilkan data
+        function showData() {
+            const table = document.getElementById("data");
+            table.innerHTML = "<tr><th>ID</th><th>Nama</th><th>Umur</th><th>Email</th><th>Aksi</th></tr>";
+
+            database.forEach(data => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${data.id}</td>
+                    <td>${data.nama}</td>
+                    <td>${data.umur}</td>
+                    <td>${data.email}</td>
+                    <td>
+                        <button onclick="editData(${data.id})">Edit</button>
+                        <button onclick="deleteData(${data.id})">Hapus</button>
+                    </td>
+                `;
+                table.appendChild(row);
+            });
+        }
+
+        // Menampilkan data saat halaman dimuat
+        showData();
+
+        // Fungsi untuk menambah data
+        document.getElementById("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const nama = document.getElementById("nama").value;
+            const umur = document.getElementById("umur").value;
+            const email = document.getElementById("email").value;
+
+            const newData = {
+                id: database.length + 1,
+                nama: nama,
+                umur: umur,
+                email: email
+            };
+
+            database.push(newData);
+            showData();
+            document.getElementById("form").reset();
+        });
+
+        // Fungsi untuk menghapus data
+        function deleteData(id) {
+            database = database.filter(data => data.id !== id);
+            showData();
+        }
+
+        // Fungsi untuk mengubah data (dalam kasus ini, hanya menampilkan data di console)
+        function editData(id) {
+            const selectedData = database.find(data => data.id === id);
+            console.log("Data yang dipilih:", selectedData);
+        }
+    </script>
+</body>
+</html>
+

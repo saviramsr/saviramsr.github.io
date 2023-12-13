@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #064c72;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: #fd9e02;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f5b349;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a href="tes.html">Home</a></li>
+  <li><a href="hyperlink.html">Hyperlink</a></li>
+  <li><a href="keanggotaan.html">Keanggotaan</a></li>
+  <li><a href="sirkulasi.html">Sirkulasi</a></li>
+  <li><a href="koleksi.html">Koleksi</a></li>
+  <li><a href="panduan.html">Panduan</a></li>
+  
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Modul</a>
+    <div class="dropdown-content">
+      <a href="modul5.html">Modul 5</a>
+      <a href="#modul6">Modul 6</a>
+      <a href="#modul7">Moodul 7</a>
+      <a href="modul8.html">Modul 8</a>
+    
+
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+    <div class="dropdown-content">
+      <a href="welcome.html">Profil</a>
+      <a href="tabel.html">Tabel</a>
+      <a href="Form.html">Form</Form></a>
+    </div>
+  </li>
+</ul>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 5</title>
+</head>
+<body align="center" style="background: #ffe3b3;">
+    <h1 style="color:#064c72"> JAVASCRIPT</h1>
+    <P>Cara Menampilkan data dalam javascript</P>
+    <p>1.Menggunakan Metode 
+        console.log(): Untuk menampilkan data ke konsol atau terminal saat debugging.
+
+        <p>Javascript
+        console.log("Hello, world!");</p>
+    </p>  
+    <p>
+    2. Manipulasi HTML dengan innerHTML: Mengubah isi elemen HTML untuk menampilkan data.
+    
+    <p>html
+        <p id="demo"></p>
+        <script>
+            document.getElementById("demo").innerHTML = "Hello, world!";
+        </script></p>
+    </p>    
+    <p>
+    3. Menggunakan alert():Untuk menampilkan pesan dalam jendela peringatan browser.
+    
+     <p>  javascript
+        alert("Hello, world!");</p>
+    </p>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perpustakaan dengan JavaScript</title>
+</head>
+<body>
+
+<h1 style="color:#064c72">Informasi Buku</h1>
+
+<p id="bookInfo">Informasi buku akan ditampilkan di sini.</p>
+
+<script>
+    // Variabel untuk menyimpan informasi buku
+    var book = {
+        title: "Pengantar Ilmu Perpustakaan",
+        author: "Andi Ibrahim",
+        pageCount: 300,
+        available: true
+    };
+
+    // Menampilkan informasi buku
+    document.getElementById("bookInfo").innerHTML += "<strong>Judul:</strong> " + book.title + "<br>";
+    document.getElementById("bookInfo").innerHTML += "<strong>Penulis:</strong> " + book.author + "<br>";
+    document.getElementById("bookInfo").innerHTML += "<strong>Jumlah Halaman:</strong> " + book.pageCount + "<br>";
+    
+    // Struktur kondisi untuk mengecek ketersediaan buku
+    if (book.available) {
+        document.getElementById("bookInfo").innerHTML += "<strong>Status:</strong> Buku tersedia<br>";
+    } else {
+        document.getElementById("bookInfo").innerHTML += "<strong>Status:</strong> Buku tidak tersedia<br>";
+    }
+
+    // Struktur perulangan (misalnya, untuk menghitung waktu pengiriman buku)
+    document.getElementById("bookInfo").innerHTML += "<br><strong>Estimasi Waktu Pengiriman:</strong><br>";
+    for (var i = 1; i <= 5; i++) {
+        var deliveryDate = new Date();
+        deliveryDate.setDate(deliveryDate.getDate() + i);
+        document.getElementById("bookInfo").innerHTML += "Hari " + i + ": " + deliveryDate.toDateString() + "<br>";
+    }
+</script>
+
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pameran Buku</title>
+</head>
+<body>
+
+<h1 style="color:#064c72">Selamat Datang di Pameran Buku</h1>
+
+<button id="btnPameran">Klik untuk Lihat Informasi Buku</button>
+
+<div id="bookInfo" style="display: none;">
+    <h2>Informasi Buku</h2>
+    <p><strong>Judul:</strong> Pemrograman dengan JavaScript</p>
+    <p><strong>Penulis:</strong> John Doe</p>
+    <p><strong>Jumlah Halaman:</strong> 300</p>
+</div>
+
+<script>
+    // Mendapatkan elemen button
+    var btnPameran = document.getElementById("btnPameran");
+    // Mendapatkan elemen div dengan informasi buku
+    var bookInfo = document.getElementById("bookInfo");
+
+    // Menambahkan event listener untuk button
+    btnPameran.addEventListener("click", function() {
+        // Jika div bookInfo tidak ditampilkan, maka tampilkan; jika sudah ditampilkan, sembunyikan
+        if (bookInfo.style.display === "none") {
+            bookInfo.style.display = "block";
+        } else {
+            bookInfo.style.display = "none";
+        }
+    });
+</script>
+</body>
+</html>
